@@ -1,0 +1,23 @@
+deployments:
+  test-deployment:
+    remote: "https://github.com/MichealAPI/NoahsArk.git"
+    branch: "master"
+    local_path: "C:/Users/***/Desktop/NoahsArk"
+    id: "test-deployment"
+    version_control: "git"
+    run-scripts:
+    - "start cmd /k echo Hello World"
+
+scripts:
+  git:
+    #clone: # Instruction to clone a repository
+    #  - "git clone {remote} {local_path}"
+    clone: # Instruction to clone a repository
+      - "git clone {remote} {local_path}"
+      - "cd {local_path} && git config core.sparseCheckout true"
+      - "cd {local_path} && git sparse-checkout set {branch}"
+    #pull: # Instruction to pull changes from a repository
+    #  - "cd {local_path} && git pull"
+    pull: # Instruction to pull changes from a repository
+      - "cd {local_path} && git pull origin {branch}"
+
