@@ -29,5 +29,8 @@ def request_handler():
     return deployment_handler.runDeployment(deployment_id)
 
 
-if __name__ == '__main__':
-    app.run()
+if __name__ != '__main__':
+    application = app
+else:
+    debug = True
+    app.run(debug=debug)
